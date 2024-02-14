@@ -1,0 +1,121 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                                FCK Triangle EA   |
+//|                                                       forexroboteasy.com |
+//|                                          Forex Robot Easy Team |
+//+------------------------------------------------------------------+
+
+// Declare global variables
+string[] currencyPairs;
+datetime startTime;
+datetime endTime;
+
+// Define the triangular arbitrage strategy
+void triangularArbitrageStrategy()
+{
+    // Identify suitable currency pairs for triangular arbitrage
+    for (int i = 0; i < currencyPairs.length(); i++)
+    {
+        for (int j = i + 1; j < currencyPairs.length(); j++)
+        {
+            for (int k = j + 1; k < currencyPairs.length(); k++)
+            {
+                string currency1 = currencyPairs[i];
+                string currency2 = currencyPairs[j];
+                string currency3 = currencyPairs[k];
+                
+                // Calculate potential profit from triangular arbitrage trades
+                double profit = calculateProfit(currency1, currency2, currency3);
+                
+                if (profit > 0)
+                {
+                    // Place trades based on the identified currency pairs
+                    placeTrade(currency1, currency2, currency3);
+                }
+            }
+        }
+    }
+}
+
+// Calculate potential profit from triangular arbitrage trades
+double calculateProfit(string currency1, string currency2, string currency3)
+{
+    // Add your calculation logic here
+    return 100; // Placeholder value for demonstration purposes
+}
+
+// Place trades based on the identified currency pairs
+void placeTrade(string currency1, string currency2, string currency3)
+{
+    // Add your trade execution logic here
+    // This is where you would send orders to the broker
+    // Example: OrderSend(currency1, currency2, currency3, ...);
+}
+
+// Create a user-friendly interface for the FCK Triangle EA software
+void createInterface()
+{
+    // Add your interface design and functionality here
+    // This is where you would display relevant information and allow users to customize parameters
+}
+
+// Allow traders to set their preferred timeframes for trading
+void setPreferredTimeframes()
+{
+    // Add your code to allow traders to set preferred timeframes
+}
+
+// Enable users to select the currencies they wish to trade with
+void selectCurrencies()
+{
+    // Add your code to allow users to select currencies
+}
+
+// Adjust trading parameters based on user preferences
+void adjustParameters()
+{
+    // Add your code to adjust trading parameters based on user preferences
+}
+
+// Ensure the code is efficient in terms of processing speed and memory usage
+void optimizeCode()
+{
+    // Add your code optimization techniques here
+}
+
+// Ensure code compatibility with forex trading platforms and APIs
+void ensureCompatibility()
+{
+    // Add your code to ensure compatibility with trading platforms and APIs
+}
+
+// Test compatibility and integration with different operating systems and trading environments
+void testCompatibility()
+{
+    // Add your code to test compatibility with different environments
+}
+
+// Main entry point of the FCK Triangle EA
+void OnStart()
+{
+    // Initialize variables and settings
+    currencyPairs = {'EURUSD', 'GBPUSD', 'USDJPY', 'USDCHF', 'AUDUSD', 'USDCAD'};
+    startTime = TimeLocal();
+    endTime = startTime + 86400; // 24 hours later
+    
+    // Start the FCK Triangle EA
+    createInterface();
+    setPreferredTimeframes();
+    selectCurrencies();
+    adjustParameters();
+    optimizeCode();
+    ensureCompatibility();
+    testCompatibility();
+    
+    // Run the triangular arbitrage strategy
+    while (TimeLocal() < endTime)
+    {
+        triangularArbitrageStrategy();
+        Sleep(1000); // Sleep for 1 second before running the strategy again
+    }
+}
